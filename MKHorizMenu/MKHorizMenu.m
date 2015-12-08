@@ -69,14 +69,21 @@
         customButton.tag = tag++;
         [customButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
-        int buttonWidth = [title sizeWithFont:customButton.titleLabel.font
-                            constrainedToSize:CGSizeMake(150, 28) 
-                                lineBreakMode:UILineBreakModeClip].width;
         
-        customButton.frame = CGRectMake(xPos, 7, buttonWidth + buttonPadding, 28);
-        xPos += buttonWidth;
+        NSMutableParagraphStyle *pragraphStyleAttribute = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        [pragraphStyleAttribute setLineBreakMode:NSLineBreakByClipping];
+        
+        CGRect buttonRect = [title boundingRectWithSize:CGSizeMake(150, 28)
+                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                             attributes:@{NSFontAttributeName:customButton.titleLabel.font,
+                                                          NSParagraphStyleAttributeName: pragraphStyleAttribute
+                                                          }
+                                                context:nil];
+        
+        customButton.frame = CGRectMake(xPos, 7, buttonRect.size.width + buttonPadding, 28);
+        xPos += buttonRect.size.width;
         xPos += buttonPadding;
-        [self addSubview:customButton];        
+        [self addSubview:customButton];
     }
     
     // bretdabaker: added right padding to contentSize

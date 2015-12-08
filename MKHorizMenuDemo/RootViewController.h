@@ -17,7 +17,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet MKHorizMenu *horizMenu;
-@property (nonatomic, retain) NSMutableArray *items;
+@property (nonatomic, retain) NSArray *items;
 @property (nonatomic, assign) IBOutlet UILabel *selectionItemLabel;
 
 @end
