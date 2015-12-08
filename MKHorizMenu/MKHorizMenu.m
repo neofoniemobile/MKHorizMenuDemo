@@ -69,9 +69,15 @@
         customButton.tag = tag++;
         [customButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
+        
+        NSMutableParagraphStyle *pragraphStyleAttribute = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        [pragraphStyleAttribute setLineBreakMode:NSLineBreakByClipping];
+        
         CGRect buttonRect = [title boundingRectWithSize:CGSizeMake(150, 28)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                             attributes:@{NSFontAttributeName:customButton.titleLabel.font}
+                                             attributes:@{NSFontAttributeName:customButton.titleLabel.font,
+                                                          NSParagraphStyleAttributeName: pragraphStyleAttribute
+                                                          }
                                                 context:nil];
         
         customButton.frame = CGRectMake(xPos, 7, buttonRect.size.width + buttonPadding, 28);
