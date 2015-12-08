@@ -21,6 +21,7 @@
 		AB369AA81366830900888B0E /* MenuBar.png in Resources */ = {isa = PBXBuildFile; fileRef = AB369AA31366830900888B0E /* MenuBar.png */; };
 		AB369AA91366830900888B0E /* MenuBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB369AA41366830900888B0E /* MenuBar@2x.png */; };
 		AB369AAA1366830900888B0E /* MKHorizMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AB369AA61366830900888B0E /* MKHorizMenu.m */; };
+		C4B59B501C173CD7003C83FC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B59B4F1C173CD7003C83FC /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		AB369AA41366830900888B0E /* MenuBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBar@2x.png"; sourceTree = "<group>"; };
 		AB369AA51366830900888B0E /* MKHorizMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKHorizMenu.h; sourceTree = "<group>"; };
 		AB369AA61366830900888B0E /* MKHorizMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKHorizMenu.m; sourceTree = "<group>"; };
+		C4B59B4F1C173CD7003C83FC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		AB369A5A1366816200888B0E = {
 			isa = PBXGroup;
 			children = (
+				C4B59B4F1C173CD7003C83FC /* Default-568h@2x.png */,
 				AB369AA11366830900888B0E /* MKHorizMenu */,
 				AB369A6F1366816200888B0E /* MKHorizMenuDemo */,
 				AB369A681366816200888B0E /* Frameworks */,
@@ -152,6 +155,7 @@
 		AB369A5C1366816200888B0E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Steinlogic;
 			};
 			buildConfigurationList = AB369A5F1366816200888B0E /* Build configuration list for PBXProject "MKHorizMenuDemo" */;
@@ -181,6 +185,7 @@
 				AB369A831366816200888B0E /* RootViewController.xib in Resources */,
 				AB369AA71366830900888B0E /* ButtonSelected.png in Resources */,
 				AB369AA81366830900888B0E /* MenuBar.png in Resources */,
+				C4B59B501C173CD7003C83FC /* Default-568h@2x.png in Resources */,
 				AB369AA91366830900888B0E /* MenuBar@2x.png in Resources */,
 				3793CB12154981F9002A57ED /* ButtonSelected@2x.png in Resources */,
 			);
@@ -233,8 +238,8 @@
 		AB369A841366816200888B0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -243,6 +248,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -250,7 +256,6 @@
 		AB369A851366816200888B0E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -270,7 +275,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MKHorizMenuDemo/MKHorizMenuDemo-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MKHorizMenuDemo/MKHorizMenuDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mugunthkumar.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -283,7 +291,10 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MKHorizMenuDemo/MKHorizMenuDemo-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MKHorizMenuDemo/MKHorizMenuDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mugunthkumar.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
