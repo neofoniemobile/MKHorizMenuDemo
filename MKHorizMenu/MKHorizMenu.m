@@ -102,6 +102,13 @@
     [self.itemSelectedDelegate horizMenu:self itemSelectedAtIndex:index];
 }
 
+
+-(void)deselectItemAtIndex:(int)index
+{
+    UIButton *thisButton = (UIButton*) [self viewWithTag:index + kButtonBaseTag];
+    thisButton.selected = NO;
+}
+
 -(void) buttonTapped:(id) sender
 {
     UIButton *button = (UIButton*) sender;
