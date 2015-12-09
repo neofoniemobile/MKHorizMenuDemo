@@ -53,4 +53,6 @@
 
 -(void) reloadData;
 -(void) setSelectedIndex:(int) index animated:(BOOL) animated;
+-(void) deselectItemAtIndex:(int) index;
+
 @end
