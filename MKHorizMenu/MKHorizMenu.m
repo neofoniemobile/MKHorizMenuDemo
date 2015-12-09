@@ -121,12 +121,8 @@
 
 - (void)dealloc
 {
-    [_selectedImage release];
     _selectedImage = nil;
-    [_titles release];
     _titles = nil;
-    
-    [super dealloc];
 }
 
 @end

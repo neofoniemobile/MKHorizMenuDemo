@@ -42,11 +42,11 @@
     UIImage *_selectedImage;
     NSMutableArray *_titles;
     id <MKHorizMenuDataSource> dataSource;
-    id <MKHorizMenuDelegate> itemSelectedDelegate;
+    __weak id <MKHorizMenuDelegate> itemSelectedDelegate;
 }
 
 @property (nonatomic, retain) NSMutableArray *titles;
-@property (nonatomic, assign) IBOutlet id <MKHorizMenuDelegate> itemSelectedDelegate;
+@property (nonatomic, weak) IBOutlet id <MKHorizMenuDelegate> itemSelectedDelegate;
 @property (nonatomic, retain) IBOutlet id <MKHorizMenuDataSource> dataSource;
 @property (nonatomic, retain) UIImage *selectedImage;
 @property (nonatomic, assign) int itemCount;
