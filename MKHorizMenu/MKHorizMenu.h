@@ -24,9 +24,10 @@
 
 @protocol MKHorizMenuDataSource <NSObject>
 @required
-- (UIImage*) selectedItemImageForMenu:(MKHorizMenu*) tabView;
-- (UIColor*) backgroundColorForMenu:(MKHorizMenu*) tabView;
-- (int) numberOfItemsForMenu:(MKHorizMenu*) tabView;
+- (UIImage *) selectedItemImageForMenu:(MKHorizMenu *) tabView;
+- (UIColor *) backgroundColorForMenu:(MKHorizMenu *) tabView;
+- (UIColor *) titleColorForMenu:(MKHorizMenu *)tabView;
+- (int) numberOfItemsForMenu:(MKHorizMenu *) tabView;
 
 - (NSString*) horizMenu:(MKHorizMenu*) horizMenu titleForItemAtIndex:(NSUInteger) index;
 @end
@@ -36,23 +37,16 @@
 - (void)horizMenu:(MKHorizMenu*) horizMenu itemSelectedAtIndex:(NSUInteger) index;
 @end
 
-@interface MKHorizMenu : UIScrollView {
+@interface MKHorizMenu : UIScrollView
 
-    int _itemCount;
-    UIImage *_selectedImage;
-    NSMutableArray *_titles;
-    id <MKHorizMenuDataSource> dataSource;
-    __weak id <MKHorizMenuDelegate> itemSelectedDelegate;
-}
-
-@property (nonatomic, retain) NSMutableArray *titles;
+@property (nonatomic) NSArray *titles;
 @property (nonatomic, weak) IBOutlet id <MKHorizMenuDelegate> itemSelectedDelegate;
-@property (nonatomic, retain) IBOutlet id <MKHorizMenuDataSource> dataSource;
-@property (nonatomic, retain) UIImage *selectedImage;
+@property (nonatomic, weak) IBOutlet id <MKHorizMenuDataSource> dataSource;
+@property (nonatomic, weak) UIImage *selectedImage;
 @property (nonatomic, assign) int itemCount;
 
--(void) reloadData;
--(void) setSelectedIndex:(int) index animated:(BOOL) animated;
--(void) deselectItemAtIndex:(int) index;
+- (void) reloadData;
+- (void) setSelectedIndex:(int) index animated:(BOOL) animated;
+- (void) deselectItemAtIndex:(int) index;
 
 @end

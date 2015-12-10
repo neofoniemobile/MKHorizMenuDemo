@@ -22,15 +22,7 @@
 
 @implementation MKHorizMenu
 
-@synthesize titles = _titles;
-@synthesize selectedImage = _selectedImage;
-
-@synthesize itemSelectedDelegate;
-@synthesize dataSource;
-@synthesize itemCount = _itemCount;
-
--(void) awakeFromNib
-{
+-(void) awakeFromNib {
     self.bounces = YES;
     self.scrollEnabled = YES;
     self.alwaysBounceHorizontal = YES;
@@ -40,16 +32,15 @@
     [self reloadData];
 }
      
--(void) reloadData
-{
+-(void) reloadData {
     NSArray *viewsToRemove = [self subviews];
 	for (UIView *v in viewsToRemove) {
 		[v removeFromSuperview];
 	}
     
-    self.itemCount = [dataSource numberOfItemsForMenu:self];
-    self.backgroundColor = [dataSource backgroundColorForMenu:self];
-    self.selectedImage = [dataSource selectedItemImageForMenu:self];
+    self.itemCount = [self.dataSource numberOfItemsForMenu:self];
+    self.backgroundColor = [self.dataSource backgroundColorForMenu:self];
+    self.selectedImage = [self.dataSource selectedItemImageForMenu:self];
 
     UIFont *buttonFont = [UIFont boldSystemFontOfSize:15];
     int buttonPadding = 25;
@@ -57,13 +48,12 @@
     int tag = kButtonBaseTag;    
     int xPos = kLeftOffset;
 
-    for(int i = 0 ; i < self.itemCount; i ++)
-    {
-        NSString *title = [dataSource horizMenu:self titleForItemAtIndex:i];
+    for(int i = 0 ; i < self.itemCount; i++) {
+        NSString *title = [self.dataSource horizMenu:self titleForItemAtIndex:i];
         UIButton *customButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [customButton setTitle:title forState:UIControlStateNormal];
         customButton.titleLabel.font = buttonFont;
-        
+        [customButton setTitleColor:[self.dataSource titleColorForMenu:self] forState:UIControlStateNormal];
         [customButton setBackgroundImage:self.selectedImage forState:UIControlStateSelected];
         
         customButton.tag = tag++;
@@ -94,8 +84,7 @@
 }
 
 
--(void) setSelectedIndex:(int) index animated:(BOOL) animated
-{
+-(void) setSelectedIndex:(int) index animated:(BOOL) animated {
     UIButton *thisButton = (UIButton*) [self viewWithTag:index + kButtonBaseTag];    
     thisButton.selected = YES;
     [self setContentOffset:CGPointMake(thisButton.frame.origin.x - kLeftOffset, 0) animated:animated];
@@ -103,18 +92,15 @@
 }
 
 
--(void)deselectItemAtIndex:(int)index
-{
+-(void)deselectItemAtIndex:(int)index {
     UIButton *thisButton = (UIButton*) [self viewWithTag:index + kButtonBaseTag];
     thisButton.selected = NO;
 }
 
--(void) buttonTapped:(id) sender
-{
+-(void) buttonTapped:(id) sender {
     UIButton *button = (UIButton*) sender;
     
-    for(int i = 0; i < self.itemCount; i++)
-    {
+    for(int i = 0; i < self.itemCount; i++) {
         UIButton *thisButton = (UIButton*) [self viewWithTag:i + kButtonBaseTag];
         if(i + kButtonBaseTag == button.tag)
             thisButton.selected = YES;
@@ -125,11 +111,5 @@
     [self.itemSelectedDelegate horizMenu:self itemSelectedAtIndex:button.tag - kButtonBaseTag];
 }
 
-
-- (void)dealloc
-{
-    _selectedImage = nil;
-    _titles = nil;
-}
 
 @end

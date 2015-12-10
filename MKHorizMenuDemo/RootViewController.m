@@ -10,9 +10,9 @@
 
 @implementation RootViewController
 
-@synthesize horizMenu = _horizMenu;
-@synthesize items = _items;
-@synthesize selectionItemLabel = _selectionItemLabel;
+//@synthesize horizMenu = _horizMenu;
+//@synthesize items = _items;
+//@synthesize selectionItemLabel = _selectionItemLabel;
 
 
 - (void)viewDidLoad
@@ -39,14 +39,8 @@
     self.selectionItemLabel = nil;
 }
 
--(void) viewDidAppear:(BOOL)animated
-{
+-(void) viewDidAppear:(BOOL)animated {
     [self.horizMenu setSelectedIndex:5 animated:YES];
-}
-
-- (void)dealloc
-{
-    [super dealloc];
 }
 
 #pragma mark -
@@ -54,6 +48,10 @@
 - (UIImage*) selectedItemImageForMenu:(MKHorizMenu*) tabMenu
 {
     return [[UIImage imageNamed:@"ButtonSelected"] stretchableImageWithLeftCapWidth:16 topCapHeight:0];
+}
+
+- (UIColor *) titleColorForMenu:(MKHorizMenu *)tabView {
+    return [UIColor whiteColor];
 }
 
 - (UIColor*) backgroundColorForMenu:(MKHorizMenu *)tabView
@@ -73,8 +71,7 @@
 
 #pragma mark -
 #pragma mark HorizMenu Delegate
--(void) horizMenu:(MKHorizMenu *)horizMenu itemSelectedAtIndex:(NSUInteger)index
-{        
+-(void) horizMenu:(MKHorizMenu *)horizMenu itemSelectedAtIndex:(NSUInteger)index {        
     self.selectionItemLabel.text = [self.items objectAtIndex:index];
 }
 @end
