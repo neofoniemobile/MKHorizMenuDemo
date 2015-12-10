@@ -22,7 +22,7 @@
 
 @implementation MKHorizMenu
 
--(void) awakeFromNib {
+- (void) awakeFromNib {
     self.bounces = YES;
     self.scrollEnabled = YES;
     self.alwaysBounceHorizontal = YES;
@@ -32,7 +32,7 @@
     [self reloadData];
 }
      
--(void) reloadData {
+- (void) reloadData {
     NSArray *viewsToRemove = [self subviews];
 	for (UIView *v in viewsToRemove) {
 		[v removeFromSuperview];
@@ -53,7 +53,18 @@
         UIButton *customButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [customButton setTitle:title forState:UIControlStateNormal];
         customButton.titleLabel.font = buttonFont;
-        [customButton setTitleColor:[self.dataSource titleColorForMenu:self] forState:UIControlStateNormal];
+        if ([self.dataSource respondsToSelector:@selector(itemTextColorForMenu:)]){
+           [customButton setTitleColor:[self.dataSource itemTextColorForMenu:self] forState:UIControlStateNormal];
+        } else {
+            [customButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }
+        
+        if ([self.dataSource respondsToSelector:@selector(itemTextSelectedColorForMenu:)]){
+            [customButton setTitleColor:[self.dataSource itemTextSelectedColorForMenu:self] forState:UIControlStateSelected];
+        } else {
+            [customButton setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
+        }
+        
         [customButton setBackgroundImage:self.selectedImage forState:UIControlStateSelected];
         
         customButton.tag = tag++;
@@ -84,7 +95,7 @@
 }
 
 
--(void) setSelectedIndex:(int) index animated:(BOOL) animated {
+- (void) setSelectedIndex:(int) index animated:(BOOL) animated {
     UIButton *thisButton = (UIButton*) [self viewWithTag:index + kButtonBaseTag];    
     thisButton.selected = YES;
     [self setContentOffset:CGPointMake(thisButton.frame.origin.x - kLeftOffset, 0) animated:animated];
@@ -92,12 +103,12 @@
 }
 
 
--(void)deselectItemAtIndex:(int)index {
+- (void)deselectItemAtIndex:(int)index {
     UIButton *thisButton = (UIButton*) [self viewWithTag:index + kButtonBaseTag];
     thisButton.selected = NO;
 }
 
--(void) buttonTapped:(id) sender {
+- (void) buttonTapped:(id) sender {
     UIButton *button = (UIButton*) sender;
     
     for(int i = 0; i < self.itemCount; i++) {

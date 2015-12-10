@@ -26,10 +26,12 @@
 @required
 - (UIImage *) selectedItemImageForMenu:(MKHorizMenu *) tabView;
 - (UIColor *) backgroundColorForMenu:(MKHorizMenu *) tabView;
-- (UIColor *) titleColorForMenu:(MKHorizMenu *)tabView;
 - (int) numberOfItemsForMenu:(MKHorizMenu *) tabView;
-
 - (NSString*) horizMenu:(MKHorizMenu*) horizMenu titleForItemAtIndex:(NSUInteger) index;
+
+@optional
+- (UIColor *)itemTextColorForMenu:(MKHorizMenu *)tabView;
+- (UIColor *)itemTextSelectedColorForMenu:(MKHorizMenu *)tabView;
 @end
 
 @protocol MKHorizMenuDelegate <NSObject>
@@ -39,11 +41,10 @@
 
 @interface MKHorizMenu : UIScrollView
 
-@property (nonatomic) NSArray *titles;
 @property (nonatomic, weak) IBOutlet id <MKHorizMenuDelegate> itemSelectedDelegate;
 @property (nonatomic, weak) IBOutlet id <MKHorizMenuDataSource> dataSource;
 @property (nonatomic, weak) UIImage *selectedImage;
-@property (nonatomic, assign) int itemCount;
+@property int itemCount;
 
 - (void) reloadData;
 - (void) setSelectedIndex:(int) index animated:(BOOL) animated;
