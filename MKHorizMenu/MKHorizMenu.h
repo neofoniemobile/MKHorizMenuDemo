@@ -43,7 +43,7 @@
 
 @property (nonatomic, weak) IBOutlet id <MKHorizMenuDelegate> itemSelectedDelegate;
 @property (nonatomic, weak) IBOutlet id <MKHorizMenuDataSource> dataSource;
-@property (nonatomic, weak) UIImage *selectedImage;
+@property (nonatomic, strong) UIImage *selectedImage;
 @property int itemCount;
 
 - (void) reloadData;
