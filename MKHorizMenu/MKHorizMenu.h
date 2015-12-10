@@ -32,6 +32,7 @@
 @optional
 - (UIColor *)itemTextColorForMenu:(MKHorizMenu *)tabView;
 - (UIColor *)itemTextSelectedColorForMenu:(MKHorizMenu *)tabView;
+- (UIFont *)itemTextFontForMenu:(MKHorizMenu *)tabView;
 @end
 
 @protocol MKHorizMenuDelegate <NSObject>

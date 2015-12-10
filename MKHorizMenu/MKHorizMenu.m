@@ -65,6 +65,10 @@
             [customButton setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
         }
         
+        if ([self.dataSource respondsToSelector:@selector(itemTextFontForMenu:)]) {
+            [customButton.titleLabel setFont:[self.dataSource itemTextFontForMenu:self]];
+        }
+        
         [customButton setBackgroundImage:self.selectedImage forState:UIControlStateSelected];
         
         customButton.tag = tag++;
