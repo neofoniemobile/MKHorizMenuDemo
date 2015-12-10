@@ -10,28 +10,20 @@
 
 @implementation RootViewController
 
-@synthesize horizMenu = _horizMenu;
-@synthesize items = _items;
-@synthesize selectionItemLabel = _selectionItemLabel;
-
-
-- (void)viewDidLoad
-{
-    self.items = [NSArray arrayWithObjects:@"Headlines", @"UK", @"International", @"Politics", @"Weather", @"Travel", @"Radio", @"Hollywood", @"Sports", @"Others", nil];    
+- (void)viewDidLoad {
+    self.items = [NSArray arrayWithObjects:@"Headlines", @"UK", @"International", @"Politics", @"Weather", @"Shou", @"Bob", @"Pascal", @"Sports", @"Pei", nil];
     [self.horizMenu reloadData];
     [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
     // Relinquish ownership any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
 
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
@@ -39,42 +31,39 @@
     self.selectionItemLabel = nil;
 }
 
--(void) viewDidAppear:(BOOL)animated
-{
+-(void) viewDidAppear:(BOOL)animated {
     [self.horizMenu setSelectedIndex:5 animated:YES];
-}
-
-- (void)dealloc
-{
-    [super dealloc];
 }
 
 #pragma mark -
 #pragma mark HorizMenu Data Source
-- (UIImage*) selectedItemImageForMenu:(MKHorizMenu*) tabMenu
-{
+- (UIImage*) selectedItemImageForMenu:(MKHorizMenu*) tabMenu {
     return [[UIImage imageNamed:@"ButtonSelected"] stretchableImageWithLeftCapWidth:16 topCapHeight:0];
 }
 
-- (UIColor*) backgroundColorForMenu:(MKHorizMenu *)tabView
-{
+- (UIColor *)itemTextColorForMenu:(MKHorizMenu *)tabView {
+    return [UIColor whiteColor];
+}
+
+- (UIColor *)itemTextSelectedColorForMenu:(MKHorizMenu *)tabView {
+    return [UIColor greenColor];
+}
+
+- (UIColor*) backgroundColorForMenu:(MKHorizMenu *)tabView {
     return [UIColor colorWithPatternImage:[UIImage imageNamed:@"MenuBar"]];
 }
 
-- (int) numberOfItemsForMenu:(MKHorizMenu *)tabView
-{
+- (int) numberOfItemsForMenu:(MKHorizMenu *)tabView {
     return (int)[self.items count];
 }
 
-- (NSString*) horizMenu:(MKHorizMenu *)horizMenu titleForItemAtIndex:(NSUInteger)index
-{
+- (NSString*) horizMenu:(MKHorizMenu *)horizMenu titleForItemAtIndex:(NSUInteger)index {
     return [self.items objectAtIndex:index];
 }
 
 #pragma mark -
 #pragma mark HorizMenu Delegate
--(void) horizMenu:(MKHorizMenu *)horizMenu itemSelectedAtIndex:(NSUInteger)index
-{        
+-(void) horizMenu:(MKHorizMenu *)horizMenu itemSelectedAtIndex:(NSUInteger)index {        
     self.selectionItemLabel.text = [self.items objectAtIndex:index];
 }
 @end

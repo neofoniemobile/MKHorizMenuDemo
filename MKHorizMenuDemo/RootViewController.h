@@ -8,16 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MKHorizMenu.h"
-@interface RootViewController : UIViewController <MKHorizMenuDataSource, MKHorizMenuDelegate> {
 
-    MKHorizMenu *_horizMenu;
-    NSMutableArray *_items;
-    
-    UILabel *_selectionItemLabel;
-}
+@interface RootViewController : UIViewController <MKHorizMenuDataSource, MKHorizMenuDelegate>
 
-@property (nonatomic, retain) IBOutlet MKHorizMenu *horizMenu;
-@property (nonatomic, retain) NSArray *items;
-@property (nonatomic, assign) IBOutlet UILabel *selectionItemLabel;
+@property (nonatomic, weak) IBOutlet MKHorizMenu *horizMenu;
+@property (nonatomic, copy) NSArray *items;
+@property (nonatomic, weak) IBOutlet UILabel *selectionItemLabel;
 
 @end
